@@ -13,8 +13,9 @@ function App() {
   }
 
   const btnClass = (name) => {
-    return `rounded-full px-4 py-2 text-xl
-    ${selectedBtn === name ? "bg-red-400 text-white shadow-none" : "bg-neutral-50 shadow-md"}`
+    return `rounded-full px-4 py-2 text-xl transition-colors duration-200
+    ${selectedBtn === name ? "bg-red-400 text-white shadow-none" 
+      : "bg-neutral-50 shadow-md"}`
   }
 
 
