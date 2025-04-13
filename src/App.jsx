@@ -1,34 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import logo from "./assets/images/logo.svg";
+import iconMoon from "./assets/images/icon-moon.svg";
+import iconSun from "./assets/images/icon-sun.svg";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(prev => !prev)
+  }
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <main className="min-h-screen w-full bg-light-gradient flex flex-col items-center p-4">
+      <div className='flex w-full justify-between bg-neutral-50 p-2 rounded-md shadow-md'>
+        <img src={logo} alt="logo" />
+        <button onClick={toggleDarkMode}>
+          <img 
+            src={darkMode ? iconSun : iconMoon} 
+            alt={darkMode ? "Set light mode" : "set dark mode"} 
+            className={`${darkMode ? `bg-neutral-600` : `bg-neutral-200`} 
+              p-2 rounded-md cursor-pointer`}
+            />
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </main>
   )
 }
 
