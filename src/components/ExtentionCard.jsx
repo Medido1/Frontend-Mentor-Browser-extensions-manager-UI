@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-function ExtentionCard ({id, card, toggleExtention}) {
+function ExtentionCard ({id, card, toggleExtention, removeExtention}) {
   
   return (
     <div>
@@ -14,7 +12,8 @@ function ExtentionCard ({id, card, toggleExtention}) {
           </div>
           <div className='flex justify-between items-center mt-6'>
             <button 
-            className='rounded-full border-neutral-300 px-2 py-1 border-2 text-sm cursor-pointer'>
+              onClick={() => removeExtention(id)}
+              className='rounded-full border-neutral-300 px-2 py-1 border-2 text-sm cursor-pointer'>
               Remove
             </button>
             <button 
