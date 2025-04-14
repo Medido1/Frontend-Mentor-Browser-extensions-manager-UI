@@ -3,6 +3,7 @@ import logo from "./assets/images/logo.svg";
 import iconMoon from "./assets/images/icon-moon.svg";
 import iconSun from "./assets/images/icon-sun.svg";
 import "./App.css";
+import ExtentionCard from './components/ExtentionCard';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -45,6 +46,9 @@ function App() {
             className={btnClass("inActive")} onClick={() => setSelectedBtn("inActive")}>Inactive
           </button>
         </div>
+      </div>
+      <div className='flex flex-col gap-2 mt-8'>
+        <ExtentionCard />
       </div>
     </main>
   )
