@@ -17,14 +17,14 @@ const cards = [
     logo: devlensLogo,
     name: "DevLens",
     description: "Quickly inspect page layouts and visualize element boundaries.",
-    isActive: false,
+    isActive: true,
   },
   {
     id: 2,
     logo: styleSpyLogo,
     name: "StyleSpy",
     description: "Instantly analyze and copy CSS from any webpage element.",
-    isActive: false,
+    isActive: true,
   },
   {
     id: 3,
@@ -38,14 +38,14 @@ const cards = [
     logo: jsonWizardLogo,
     name: "JSONWizard",
     description: "Formats, validates, and prettifies JSON responses in-browser.",
-    isActive: false,
+    isActive: true,
   },
   {
     id: 5,
     logo: tabMasterProLogo,
     name: "TabMaster Pro",
     description: "Organizes browser tabs into groups and sessions.",
-    isActive: false,
+    isActive: true,
   },
   {
     id: 6,
@@ -59,7 +59,7 @@ const cards = [
     logo: markupNotesLogo,
     name: "Markup Notes",
     description: "Enables annotation and notes directly onto webpages for collaborative debugging.",
-    isActive: false,
+    isActive: true,
   },
   {
     id: 8,
@@ -73,14 +73,14 @@ const cards = [
     logo: palettePickerLogo,
     name: "Palette Picker",
     description: "Instantly extracts color palettes from any webpage.",
-    isActive: false,
+    isActive: true,
   },
   {
     id: 10,
     logo: linkCheckerLogo,
     name: "LinkChecker",
     description: "Scans and highlights broken links on any page.",
-    isActive: false,
+    isActive: true,
   },
   {
     id: 11,
@@ -94,7 +94,7 @@ const cards = [
     logo: consolePlusLogo,
     name: "ConsolePlus",
     description: "Enhanced developer console with advanced filtering and logging.",
-    isActive: false,
+    isActive: true,
   },
 ];
 

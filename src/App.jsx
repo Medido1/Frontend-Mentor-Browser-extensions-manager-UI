@@ -10,10 +10,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [selectedBtn, setSelectedBtn] = useState("all");
   const [cardsData, setCardsData] = useState(cards);
-
-  useEffect(() => {
-    console.log(cardsData)
-  }, [cardsData])
+  const [extentionStatus, setExtentionStatus] = useState("all");
 
   const toggleDarkMode = () => {
     setDarkMode(prev => !prev)
@@ -37,6 +34,10 @@ function App() {
       : "bg-neutral-50 shadow-md"}`
   }
 
+  const toggleExtentionDisplay = (name) => {
+    setSelectedBtn(name)
+    setExtentionStatus(name)
+  }
 
   return (
     <main className="min-h-screen w-full bg-light-gradient flex flex-col items-center p-4">
@@ -55,18 +56,18 @@ function App() {
         <h1 className='text-3xl font-bold mb-4'>Extensions List</h1>
         <div className='flex gap-4'>
           <button 
-            className={btnClass("all")} onClick={() => setSelectedBtn("all")}>All
+            className={btnClass("all")} onClick={() => toggleExtentionDisplay("all")}>All
           </button>
           <button 
-            className={btnClass("active")} onClick={() => setSelectedBtn("active")}>Active
+            className={btnClass("active")} onClick={() => toggleExtentionDisplay("active")}>Active
           </button>
           <button 
-            className={btnClass("inActive")} onClick={() => setSelectedBtn("inActive")}>Inactive
+            className={btnClass("inActive")} onClick={() => toggleExtentionDisplay("inActive")}>Inactive
           </button>
         </div>
       </div>
       <div className='flex flex-col gap-4 mt-8'>
-        {cardsData.map(card => {
+        {extentionStatus === "all" && cardsData.map(card => {
           return <ExtentionCard 
             key={card.id}
             id = {card.id}
@@ -75,6 +76,32 @@ function App() {
             removeExtention = {removeExtention}
           />
         })}
+        {extentionStatus === "active" && 
+          cardsData
+          .filter(card => card.isActive)
+          .map(card => 
+            <ExtentionCard 
+              key={card.id}
+              id = {card.id}
+              card = {card}
+              toggleExtention = {toggleExtention}
+              removeExtention = {removeExtention}
+            />
+        )}
+        {extentionStatus === "inActive" &&
+          cardsData
+            .filter(card => !card.isActive)
+            .map(card => 
+              <ExtentionCard 
+                key={card.id}
+                id = {card.id}
+                card = {card}
+                toggleExtention = {toggleExtention}
+                removeExtention = {removeExtention}
+              />
+            )
+
+        }
       </div>
     </main>
   )
