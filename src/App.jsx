@@ -1,16 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from "./assets/images/logo.svg";
 import iconMoon from "./assets/images/icon-moon.svg";
 import iconSun from "./assets/images/icon-sun.svg";
 import "./App.css";
 import ExtentionCard from './components/ExtentionCard';
+import {cards} from "../data";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [selectedBtn, setSelectedBtn] = useState("all");
+  const [cardsData, setCardsData] = useState(cards);
+
+  useEffect(() => {
+    console.log(cardsData)
+  }, [cardsData])
 
   const toggleDarkMode = () => {
     setDarkMode(prev => !prev)
+  }
+
+  const toggleExtention = (id) => {
+    setCardsData(prev => 
+      prev.map(card => 
+        card.id === id ? {...card, isActive: !card.isActive} :card
+      )
+    )
   }
 
   const btnClass = (name) => {
@@ -47,8 +61,15 @@ function App() {
           </button>
         </div>
       </div>
-      <div className='flex flex-col gap-2 mt-8'>
-        <ExtentionCard />
+      <div className='flex flex-col gap-4 mt-8'>
+        {cardsData.map(card => {
+          return <ExtentionCard 
+            key={card.id}
+            id = {card.id}
+            card = {card}
+            toggleExtention = {toggleExtention}
+          />
+        })}
       </div>
     </main>
   )
