@@ -68,7 +68,7 @@ function App() {
         <button onClick={toggleDarkMode}>
           <img 
             src={darkMode ? iconSun : iconMoon} 
-            alt={darkMode ? "Set light mode" : "set dark mode"} 
+            alt={darkMode ? "switch light mode" : "switch dark mode"} 
             className={`${darkMode ? `bg-gray-600` : `bg-neutral-200`} 
               p-2 rounded-md cursor-pointer`}
             />
