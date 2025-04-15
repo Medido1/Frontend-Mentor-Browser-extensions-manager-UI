@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import logo from "./assets/images/logo.svg";
+import logoDark from "./assets/images/logo-dark.svg";
 import iconMoon from "./assets/images/icon-moon.svg";
 import iconSun from "./assets/images/icon-sun.svg";
 import "./App.css";
@@ -29,9 +30,19 @@ function App() {
   }
 
   const btnClass = (name) => {
-    return `rounded-full px-4 py-2 text-xl transition-colors duration-200
-    ${selectedBtn === name ? "bg-red-400 text-white shadow-none" 
-      : "bg-neutral-50 shadow-md"}`
+    const baseClasses = "rounded-full px-4 py-2 text-xl transition-colors duration-200"
+    
+    if (selectedBtn === name) {
+      // Selected button styles
+      return `${baseClasses} bg-red-400 shadow-none ${
+        darkMode ? "text-black" : "text-white"
+      }`
+    } else {
+      // Unselected button styles
+      return `${baseClasses} shadow-md ${
+        darkMode ? "text-white  bg-gray-600" : "text-gray-800 "
+      }`
+    }
   }
 
   const toggleExtentionDisplay = (name) => {
@@ -40,20 +51,25 @@ function App() {
   }
 
   return (
-    <main className="min-h-screen w-full bg-light-gradient flex flex-col items-center p-4">
-      <div className='flex w-full justify-between bg-neutral-50 p-2 rounded-md shadow-md mb-8'>
-        <img src={logo} alt="logo" />
+    <main className={`min-h-screen w-full  flex flex-col items-center p-4
+      ${darkMode ? "bg-dark-gradient" : "bg-light-gradient"}`}>
+      <div className={`flex w-full justify-between p-2 rounded-md shadow-md mb-8
+        ${darkMode ? "bg-gray-800" : "bg-neutral-50"}`
+      }>
+        <img src={darkMode ? logoDark : logo} alt="logo" />
         <button onClick={toggleDarkMode}>
           <img 
             src={darkMode ? iconSun : iconMoon} 
             alt={darkMode ? "Set light mode" : "set dark mode"} 
-            className={`${darkMode ? `bg-neutral-600` : `bg-neutral-200`} 
+            className={`${darkMode ? `bg-gray-600` : `bg-neutral-200`} 
               p-2 rounded-md cursor-pointer`}
             />
         </button>
       </div>
       <div className='flex flex-col items-center'>
-        <h1 className='text-3xl font-bold mb-4'>Extensions List</h1>
+        <h1 className={`text-3xl font-bold mb-4 ${darkMode ? "text-white" :""}`}>
+          Extensions List
+        </h1>
         <div className='flex gap-4'>
           <button 
             className={btnClass("all")} onClick={() => toggleExtentionDisplay("all")}>All
@@ -74,6 +90,7 @@ function App() {
             card = {card}
             toggleExtention = {toggleExtention}
             removeExtention = {removeExtention}
+            darkMode={darkMode}
           />
         })}
         {extentionStatus === "active" && 
@@ -86,6 +103,7 @@ function App() {
               card = {card}
               toggleExtention = {toggleExtention}
               removeExtention = {removeExtention}
+              darkMode={darkMode}
             />
         )}
         {extentionStatus === "inActive" &&
@@ -98,6 +116,7 @@ function App() {
                 card = {card}
                 toggleExtention = {toggleExtention}
                 removeExtention = {removeExtention}
+                darkMode={darkMode}
               />
             )
 
