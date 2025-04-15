@@ -35,13 +35,13 @@ function App() {
     
     if (selectedBtn === name) {
       // Selected button styles
-      return `${baseClasses} bg-red-400 shadow-none ${
+      return `${baseClasses} bg-red-400 shadow-none  hover:bg-red-600 ${
         darkMode ? "text-black" : "text-white"
       }`
     } else {
       // Unselected button styles
       return `${baseClasses} shadow-md ${
-        darkMode ? "text-white  bg-gray-600" : "text-gray-800 "
+        darkMode ? "text-white  bg-gray-600 hover:bg-gray-800" : "text-gray-800 hover:bg-gray-200 "
       }`
     }
   }
