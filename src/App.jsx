@@ -91,7 +91,7 @@ function App() {
           </button>
         </div>
       </div>
-      <div className='flex flex-col gap-4 mt-8 md:grid md:grid-cols-2 lg:grid-cols-3 lg:w-3/4'>
+      <div className='flex flex-col gap-4 mt-8 md:grid md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 lg:w-3/4 '>
         {filterdCards.map(card => (
           <ExtensionCard 
           key={card.id}
