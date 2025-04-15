@@ -1,13 +1,13 @@
 function ExtensionCard ({id, card, toggleExtension, removeExtension, darkMode}) {
   return (
     <div>
-      <div className={`p-4 h-42 rounded-2xl shadow-md max-w-[390px]
+      <div className={`p-4 h-44 rounded-2xl shadow-md max-w-[390px]
         ${darkMode ? "bg-gray-800" : "bg-neutral-50"}`}> 
           <div className={`flex gap-2 ${darkMode ? "text-white" : ""}`}>
             <img src={card.logo} className='max-h-14' />
             <div>
               <p className='font-bold mb-2'>{card.name}</p>
-              <p className='text-sm font-light leading-6'>{card.description}</p>
+              <p className='text-sm font-light leading-5'>{card.description}</p>
             </div>
           </div>
           <div className='flex justify-between items-center mt-6'>
