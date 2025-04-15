@@ -13,6 +13,13 @@ function App() {
   const [cardsData, setCardsData] = useState(cards);
   const [extentionStatus, setExtentionStatus] = useState("all");
 
+  const filterdCards = 
+    extentionStatus === "all" 
+    ? cardsData
+    : extentionStatus === "active"
+    ? cardsData.filter(card => card.isActive)
+    : cardsData.filter(card => !card.isActive)
+
   const toggleDarkMode = () => {
     setDarkMode(prev => !prev)
   }
@@ -85,44 +92,16 @@ function App() {
         </div>
       </div>
       <div className='flex flex-col gap-4 mt-8 md:grid md:grid-cols-2 lg:grid-cols-3 lg:w-3/4'>
-        {extentionStatus === "all" && cardsData.map(card => {
-          return <ExtentionCard 
-            key={card.id}
-            id = {card.id}
-            card = {card}
-            toggleExtention = {toggleExtention}
-            removeExtention = {removeExtention}
-            darkMode={darkMode}
-          />
-        })}
-        {extentionStatus === "active" && 
-          cardsData
-          .filter(card => card.isActive)
-          .map(card => 
-            <ExtentionCard 
-              key={card.id}
-              id = {card.id}
-              card = {card}
-              toggleExtention = {toggleExtention}
-              removeExtention = {removeExtention}
-              darkMode={darkMode}
-            />
-        )}
-        {extentionStatus === "inActive" &&
-          cardsData
-            .filter(card => !card.isActive)
-            .map(card => 
-              <ExtentionCard 
-                key={card.id}
-                id = {card.id}
-                card = {card}
-                toggleExtention = {toggleExtention}
-                removeExtention = {removeExtention}
-                darkMode={darkMode}
-              />
-            )
-
-        }
+        {filterdCards.map(card => (
+          <ExtentionCard 
+          key={card.id}
+          id = {card.id}
+          card = {card}
+          toggleExtention = {toggleExtention}
+          removeExtention = {removeExtention}
+          darkMode={darkMode}
+        />
+        ))}
       </div>
     </main>
   )
