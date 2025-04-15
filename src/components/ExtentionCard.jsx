@@ -1,7 +1,7 @@
 function ExtentionCard ({id, card, toggleExtention, removeExtention, darkMode}) {
   return (
     <div>
-      <div className={`p-4 h-42 rounded-2xl shadow-md
+      <div className={`p-4 h-42 rounded-2xl shadow-md max-w-[390px]
         ${darkMode ? "bg-gray-800" : "bg-neutral-50"}`}> 
           <div className={`flex gap-2 ${darkMode ? "text-white" : ""}`}>
             <img src={card.logo} className='max-h-14' />

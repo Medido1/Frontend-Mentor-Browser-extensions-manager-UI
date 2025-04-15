@@ -30,7 +30,8 @@ function App() {
   }
 
   const btnClass = (name) => {
-    const baseClasses = "rounded-full px-4 py-2 text-xl transition-colors duration-200"
+    const baseClasses = `rounded-full px-4 py-2 text-xl 
+    transition-colors duration-200 cursor-pointer`
     
     if (selectedBtn === name) {
       // Selected button styles
@@ -53,7 +54,7 @@ function App() {
   return (
     <main className={`min-h-screen w-full  flex flex-col items-center p-4
       ${darkMode ? "bg-dark-gradient" : "bg-light-gradient"}`}>
-      <div className={`flex w-full justify-between p-2 rounded-md shadow-md mb-8
+      <div className={`flex w-full justify-between p-2 rounded-md shadow-md mb-8 md:w-3/4
         ${darkMode ? "bg-gray-800" : "bg-neutral-50"}`
       }>
         <img src={darkMode ? logoDark : logo} alt="logo" />
@@ -66,8 +67,9 @@ function App() {
             />
         </button>
       </div>
-      <div className='flex flex-col items-center'>
-        <h1 className={`text-3xl font-bold mb-4 ${darkMode ? "text-white" :""}`}>
+      <div className='flex flex-col items-center md:flex-row 
+        md:justify-between  md:w-3/4'>
+        <h1 className={`text-3xl font-bold mb-4 md:mb-0 ${darkMode ? "text-white" :""}`}>
           Extensions List
         </h1>
         <div className='flex gap-4'>
@@ -82,7 +84,7 @@ function App() {
           </button>
         </div>
       </div>
-      <div className='flex flex-col gap-4 mt-8'>
+      <div className='flex flex-col gap-4 mt-8 md:grid md:grid-cols-2 lg:grid-cols-3 lg:w-3/4'>
         {extentionStatus === "all" && cardsData.map(card => {
           return <ExtentionCard 
             key={card.id}
